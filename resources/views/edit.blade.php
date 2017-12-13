@@ -6,7 +6,7 @@
 
 	<h1>Edit Product</h1>
 
-	@if(success)
+	@if($success)
 		<div class="alert alert-success" role="alert">
 			Task successfully updated!
 		</div>
@@ -15,25 +15,25 @@
 	<form class="form" method="POST">
 		<div class="form-group">
 			<label for="task">Task</label>
-			<input type="text" class="form-control" id="task" name="task" value="{{$agenda->task}}" 
+			<input type="text" class="form-control" id="task" name="task" value="{{$foo->task}}" 
 			placeholder="Task at hand" />
 		</div>
 
 		<div class="form-group">
 			<label for="associate">Associate</label>
-			<input type="text" class="form-control" id="associate" name="associate" value="{{$agenda->associate}}" 
+			<input type="text" class="form-control" id="associate" name="associate" value="{{$foo->associate}}" 
 			placeholder="Associate/Associates involved" />
-		</div>i
+		</div>
 
 		<div class="form-group">
 			<label for="urgency"></label>
-			<input type="text" class="form-control" id="urgency" name="urgency" value="{{$agenda->urgency}}" 
+			<input type="text" class="form-control" id="urgency" name="urgency" value="{{$foo->urgency}}" 
 			placeholder="urgency" />
 		</div>
 
 		<div class="form-group">
 			<button class="btn btn-success btn-small" type="submit">Change</button>
-			<a class="btn btn-default" href="/agendas">Back to Task</a>
+			<a class="btn btn-default" href="/">Back to Task</a>
 		</div>
 	</form>
 

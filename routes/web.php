@@ -17,21 +17,19 @@ Route::get('/', function () {
 });
 */
 
-$controller = function () { return view ('Welcome'); };
 
-Route::get('/',$controller);
+Route::get('/', "AgendaController@index");
 
-Route::get('/agenda', "Agenda@index");
+Route::get('/agenda/detail/{agenda_id}', "AgendaController@detail");
 
-Route::get('/agenda/add', "Agenda@add");
-Route::post('/agenda/add', "Agenda@add");
+Route::get('/agenda/add', "AgendaController@add");
+Route::post('/agenda/add', "AgendaController@add");
 
-Route::get('/agenda/detail/{task_id}', "Agenda@detail");
 
-Route::get('agenda/edit/{task_id}', "Agenda@edit");
-Route::post('agenda/edit/{task_id}', "Agenda@edit");
+Route::get('agenda/edit/{agenda_id}', "AgendaController@edit");
+Route::post('agenda/edit/{agenda_id}', "AgendaController@edit");
 
-Route::post('agenda/delete', "Agenda@delete");
+Route::post('agenda/delete', "AgendaController@delete");
 
 
 Route::get('/media',"MediaController@index");

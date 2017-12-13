@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Agenda extends Controller {
+class AgendaController extends Controller {
 
 	function index() {
 		$agenda = DB::select("select * from agenda");
@@ -13,13 +13,13 @@ class Agenda extends Controller {
 
 		$data = [ 'agenda' => $agenda ];
 
-		return view('task/index', $data);
+		return view('index', $data);
 
 	}
 
 
-	function detail($list, Request $request) {
-		$agenda = DB::select('select * from agenda where id=?', [$list]);
+	function detail($agenda_id, Request $request) {
+		$agenda = DB::select('select * from agenda where id=?', [$agenda_id]);
 		//cek data
 		//dd($agenda);
 		//var_dump($agenda);
@@ -29,7 +29,7 @@ class Agenda extends Controller {
 
 		$data =[ 'task' => $task ];
 
-		return view('task/detail', $data);
+		return view('detail', $data);
 	}
 
 
@@ -37,51 +37,51 @@ class Agenda extends Controller {
 		$data = [ 'success' => false ];
 
 		if ($request->isMethod('post')) {
-			$agendaTask = $request->input('agenda_task');
-			$agendaAssociate = $request->input('agenda_associate');
+			$task = $request->input('task');
+			$associate = $request->input('associate');
 			$urgency = $request->input('urgency');
 
 		        $returnValue = DB::insert('insert into agenda(task,associate,urgency) values(?,?,?)', 
-			[$agendaTask,$agendaAssociate,$urgency] );
+			[$task,$associate,$urgency] );
 
 			if ($returnValue) {
 				$data = [ 'success' => 1 ];
 			}
 		}
 
-		return view('task/add',$data);
+		return view('add',$data);
 	}
 
 
-	function edit($list, Request $request) {
-		$agenda = DB::select('select * from agenda where id=?', [$list]);
-		$task = reset($agenda);
+	function edit($agenda_id, Request $request) {
+		$agenda = DB::select('select * from agenda where id=?', [$agenda_id]);
+		$foo = reset($agenda);
 
 		$success = false;
 		if ($request->isMethod('post')) {
-			$agendaTask = $request->input('agenda_task');
-			$agendaAssociate = $request->input('agenda_associate');
+			$task = $request->input('task');
+			$associate = $request->input('associate');
 			$urgency = $request->input('urgency');
 
 			$returnValue = DB::update('update agenda set task=?, associate=?, urgency=? where id=?' , 
-			[$agendaTask,$agendaAssociate,$urgency,$task] );
+			[$task,$associate,$urgency,$agenda_id] );
 				if ($returnValue) {
 					$success = true;
 				}
 		}
 
 		$data = [
-			'task' => $task ,
+			'foo' => $foo ,
 			'success' => $success
 		];
 
-		return view('task/edit', $data);
+		return view('edit', $data);
 	}
 
 
 	function delete(Request $request) {
-		$taskId = $request->input('task_id');
-		$returnValue = DB::delete('delete from agenda where id=?', [$taskId] );
+		$bar = $request->input('task_id');
+		$returnValue = DB::delete('delete from agenda where id=?', [$bar] );
 
 		if ($returnValue) {
 			return "Task deleted";

@@ -1,12 +1,12 @@
 @extends('layout')
 @section('content')
-<div clas="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6">
 
 	<h1>Add Task</h1>
 
-	@if(success)
+	@if($success)
 		<div class="alert alert-success" role="alert">
 			Task successfully noted.
 		</div>
@@ -38,6 +38,7 @@
 			<button class="btn btn-success btn-small" type="submit">
 				Confirm
 			</button>
+			<a class="btn btn-default" href="/">Back to Task</a>
 		</div>
 	</form>
 
