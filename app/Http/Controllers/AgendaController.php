@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 class AgendaController extends Controller {
 
 	function index() {
-		$agenda = DB::select("select * from agenda");
+		$agendas = DB::select("select * from agenda");
 		//dd($agenda);
 
-		$data = [ 'agenda' => $agenda ];
+		$data = [ 'agendas' => $agendas ];
 
 		return view('index', $data);
 
@@ -19,13 +19,13 @@ class AgendaController extends Controller {
 
 
 	function detail($agenda_id, Request $request) {
-		$agenda = DB::select('select * from agenda where id=?', [$agenda_id]);
+		$agendas = DB::select('select * from agenda where id=?', [$agenda_id]);
 		//cek data
-		//dd($agenda);
-		//var_dump($agenda);
+		//dd($agendas);
+		//var_dump($agendas);
 
 		//ambil first element
-		$task=reset($agenda);
+		$task=reset($agendas);
 
 		$data =[ 'task' => $task ];
 
@@ -37,6 +37,7 @@ class AgendaController extends Controller {
 		$data = [ 'success' => false ];
 
 		if ($request->isMethod('post')) {
+						//name! di view nya, kalo id biasanya buat css dan javascript
 			$task = $request->input('task');
 			$associate = $request->input('associate');
 			$urgency = $request->input('urgency');
@@ -54,8 +55,8 @@ class AgendaController extends Controller {
 
 
 	function edit($agenda_id, Request $request) {
-		$agenda = DB::select('select * from agenda where id=?', [$agenda_id]);
-		$foo = reset($agenda);
+		$agendas = DB::select('select * from agenda where id=?', [$agenda_id]);
+		$agenda = reset($agendas);
 
 		$success = false;
 		if ($request->isMethod('post')) {
@@ -71,7 +72,7 @@ class AgendaController extends Controller {
 		}
 
 		$data = [
-			'foo' => $foo ,
+			'agenda' => $agenda ,
 			'success' => $success
 		];
 
@@ -80,8 +81,8 @@ class AgendaController extends Controller {
 
 
 	function delete(Request $request) {
-		$bar = $request->input('task_id');
-		$returnValue = DB::delete('delete from agenda where id=?', [$bar] );
+		$taskID = $request->input('task_id');
+		$returnValue = DB::delete('delete from agenda where id=?', [$taskID] );
 
 		if ($returnValue) {
 			return "Task deleted";

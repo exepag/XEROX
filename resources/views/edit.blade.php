@@ -15,19 +15,19 @@
 	<form class="form" method="POST">
 		<div class="form-group">
 			<label for="task">Task</label>
-			<input type="text" class="form-control" id="task" name="task" value="{{$foo->task}}" 
+			<input type="text" class="form-control" id="task" name="task" value="{{$agenda->task}}" 
 			placeholder="Task at hand" />
 		</div>
 
 		<div class="form-group">
 			<label for="associate">Associate</label>
-			<input type="text" class="form-control" id="associate" name="associate" value="{{$foo->associate}}" 
+			<input type="text" class="form-control" id="associate" name="associate" value="{{$agenda->associate}}" 
 			placeholder="Associate/Associates involved" />
 		</div>
 
 		<div class="form-group">
 			<label for="urgency"></label>
-			<input type="text" class="form-control" id="urgency" name="urgency" value="{{$foo->urgency}}" 
+			<input type="text" class="form-control" id="urgency" name="urgency" value="{{$agenda->urgency}}" 
 			placeholder="urgency" />
 		</div>
 

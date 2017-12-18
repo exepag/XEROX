@@ -20,7 +20,7 @@
 		  </tr>
 		</thead>
 
-		@foreach ($agenda as $task)
+		@foreach ($agendas as $task)
 		  <tr>
 		    <td>	{{$task->id}}	</td>
 		    <td>	{{$task->task}}	</td>
