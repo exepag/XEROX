@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 @section('content')
 <div class="container">
 	<div class="well">
@@ -7,6 +7,7 @@
 		<form method="POST" action="/agenda/delete" style="display:inline">
 			<input type="hidden" name="task_id" value="{{$task->id}}" />
 			<button type="submit" class="btn btn-danger">DELETE</button>
+			{{csrf_field()}}
 		</form>
 
 		<a class="btn btn-default" href="/">Back to Task</a>

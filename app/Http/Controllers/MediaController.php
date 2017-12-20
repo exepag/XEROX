@@ -6,6 +6,15 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller {
+
+
+public function __construct () {
+//Security untuk check apakah user sudah Login atau belum
+//Kalau belum akan redirect ke Login
+$this->middleware('auth');
+}
+
+
 	
 	function upload(Request $request) {
 

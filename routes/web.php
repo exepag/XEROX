@@ -35,3 +35,7 @@ Route::post('agenda/delete', "AgendaController@delete");
 Route::get('/media',"MediaController@index");
 Route::get('/media/upload',"MediaController@upload");
 Route::post('/media/upload',"MediaController@upload");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

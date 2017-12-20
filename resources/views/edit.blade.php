@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 @section('content')
 <div class="container">
   <div class="row">
@@ -35,6 +35,8 @@
 			<button class="btn btn-success btn-small" type="submit">Change</button>
 			<a class="btn btn-default" href="/">Back to Task</a>
 		</div>
+
+		{{csrf_field()}}
 	</form>
 
     </div>

@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class AgendaController extends Controller {
 
+
+
+public function __construct () {
+//Security untuk check apakah user sudah Login atau belum
+//Kalau belum akan redirect ke Login
+$this->middleware('auth');
+}
+
+
+
 	function index() {
 		$agendas = DB::select("select * from agenda");
 		//dd($agenda);
