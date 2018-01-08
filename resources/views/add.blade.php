@@ -18,6 +18,14 @@
 				Task
 			</label>
 			<input type="text" class="form-control" id="task" name="task" placeholder="Task at hand" />
+
+			{{--ERROR--}}
+			@if($errors->first('task'))
+				<div class="alert alert-danger">
+					<p>	{{$errors->first('task') }}	</p>
+				</div>
+			@endif()
+
 		</div>
 
 		<div class="form-group">
@@ -25,6 +33,14 @@
 				Associates
 			</label>
 			<input type="text" class="form-control" id="associate" name="associate" placeholder="Associate/Associates involved" />
+
+			{{--ERROR--}}
+			@if($errors->first('associate'))
+				<div class="alert alert-danger">
+					<p>	{{$errors->first('associate') }}	</p>
+				</div>
+			@endif()
+
 		</div>
 
 		<div class="form-group">
@@ -32,6 +48,14 @@
 				Urgency
 			</label>
 			<input type="text" class="form-control" id="urgency" name="urgency" placeholder="Level of urgency" />
+
+			{{--ERROR--}}
+			@if($errors->first('urgency'))
+				<div class="alert alert-danger">
+					<p>	{{$errors->first('urgency') }}	</p>
+				</div>
+			@endif()
+
 		</div>
 
 		<div class="form-group">

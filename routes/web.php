@@ -40,6 +40,10 @@ Route::get('/page-view',"PageViewController@index");
 Route::get('/page-view-reset',"PageViewController@reset");
 
 
+Route::get('/api/agenda',"ApiController@setAgenda");
+Route::get('/agenda/list',"AgendaController@getList");
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

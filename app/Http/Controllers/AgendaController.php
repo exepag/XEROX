@@ -16,6 +16,11 @@ $this->middleware('auth');
 }
 
 
+	function getList() {
+
+		return view('list');
+	}
+
 
 	function index() {
 		$agendas = DB::select("select * from agenda");
@@ -47,11 +52,21 @@ $this->middleware('auth');
 		$data = [ 'success' => false ];
 
 		if ($request->isMethod('post')) {
+
+			//Validasi
+			$request->validate([
+				'task' => 'required|alpha',
+				'associate' => 'required',
+				'urgency' => 'required|numeric',
+			]);
+
+
+
 						//name! di view nya, kalo id biasanya buat css dan javascript
 			$task = $request->input('task');
 			$associate = $request->input('associate');
 			$urgency = $request->input('urgency');
-
+	
 		        $returnValue = DB::insert('insert into agenda(task,associate,urgency) values(?,?,?)', 
 			[$task,$associate,$urgency] );
 
