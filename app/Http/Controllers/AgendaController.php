@@ -85,6 +85,15 @@ $this->middleware('auth');
 
 		$success = false;
 		if ($request->isMethod('post')) {
+
+			//Validasi
+			$request->validate([
+				'task' => 'required|alpha',
+				'associate' => 'required',
+				'urgency' => 'required|numeric'
+			])
+
+
 			$task = $request->input('task');
 			$associate = $request->input('associate');
 			$urgency = $request->input('urgency');
